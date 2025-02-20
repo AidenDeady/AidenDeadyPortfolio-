@@ -4,109 +4,351 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - Aiden Deady</title>
-    <link rel="stylesheet" href="projects.css">
+    <style>
+        :root {
+            --primary-bg: #0a0a0a;
+            --secondary-bg: #141414;
+            --accent-color: #ff3333;
+            --accent-glow: #ff333333;
+            --text-primary: #ffffff;
+            --text-secondary: #909090;
+            --card-bg: rgba(20, 20, 20, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: linear-gradient(45deg, var(--primary-bg), #1a1a1a, #0d0d0d);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .nav {
+            position: fixed;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 51, 51, 0.1);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #fff, var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Mobile menu button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--text-primary);
+        }
+
+        .projects-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 7rem 1rem 4rem;
+            text-align: center;
+        }
+
+        .projects-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #fff, var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-title {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            color: var(--accent-color);
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            padding: 0.5rem;
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            height: 250px;
+            border: 1px solid rgba(255, 51, 51, 0.1);
+            background: var(--card-bg);
+        }
+
+        .project-card:hover {
+            transform: scale(1.03);
+        }
+
+        .project-link {
+            display: block;
+            height: 100%;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(20, 20, 20, 0.8);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            text-align: center;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-overlay h3 {
+            font-size: clamp(1.1rem, 1.5vw, 1.5rem);
+            margin-bottom: 0.75rem;
+            color: var(--accent-color);
+        }
+
+        .project-overlay p {
+            font-size: clamp(0.875rem, 1vw, 1rem);
+            color: var(--text-secondary);
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Media Queries */
+        @media screen and (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 10, 10, 0.95);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .project-card {
+                height: 200px;
+            }
+
+            .project-overlay {
+                opacity: 1;
+                background: rgba(20, 20, 20, 0.7);
+            }
+
+            .section-title {
+                text-align: center;
+                margin: 1.5rem 0;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .nav-content {
+                padding: 0.75rem;
+            }
+
+            .logo {
+                font-size: 1.1rem;
+            }
+
+            .projects-container {
+                padding: 4rem 0.75rem 2rem;
+            }
+
+            .project-card {
+                height: 180px;
+            }
+
+            .project-overlay {
+                padding: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav class="nav">
         <div class="nav-content">
             <div class="logo">Aiden Deady</div>
+            <button class="mobile-menu-btn">☰</button>
             <div class="nav-links">
                 <a href="index.html">Home</a>
-                <a href="aboutme.html" style="color: var(--text-primary);">About Me</a>
-                <a href="projects.html">Projects</a>
+                <a href="aboutme.html">About Me</a>
+                <a href="projects.html" class="active">Projects</a>
                 <a href="contact.html">Contact</a>
             </div>
         </div>
     </nav>
+
     <main class="projects-container">
         <h1 class="projects-title">Projects</h1>
-      <!-- Mechanical Projects Section -->
-      <section class="projects-section">
-        <h2 class="section-title">Robotics and Mechanical Engineering Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <a href="Battlebot.html" class="project-link">
-                    <img src="assets/Battlebot.png" alt="BattleBot" class="project-img">
-                    <div class="project-overlay">
-                        <h3>Combat Robot Design and Development</h3>
-                        <p>Design and fabrication of a 30lb combat robot for NHRL competition.</p>
-                    </div>
-                </a>
+        
+        <section class="projects-section">
+            <h2 class="section-title">Robotics and Mechanical Engineering Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <a href="Battlebot.html" class="project-link">
+                        <img src="assets/Battlebot.png" alt="BattleBot" class="project-img">
+                        <div class="project-overlay">
+                            <h3>Combat Robot Design and Development</h3>
+                            <p>Design and fabrication of a 30lb combat robot for NHRL competition.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="project-card">
+                    <a href="advancedEng.html" class="project-link">
+                        <img src="assets/Vaccum.png" alt="Mechanical Project 2" class="project-img">
+                        <div class="project-overlay">
+                            <h3>DustBin Noise Reduction for Autonomous Robotic Vacuum Cleaner</h3>
+                            <p>Designed and optimized fan blade geometry for noise reduction in robotic vaccum cleaner.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="project-card">
+                    <a href="2001.html" class="project-link">
+                        <img src="assets/2001.png" alt="Robotics Project 2" class="project-img">
+                        <div class="project-overlay">
+                            <h3>Autonomous Solar Panel Replacement Robot</h3>
+                            <p>Developed an autonomous multi-robot system to cooperatively remove and replace solar panels at varying heights using precision four-bar mechanisms and custom grippers.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="project-card">
+                    <a href="3001.html" class="project-link">
+                        <img src="assets/3001.png" alt="Robotics Project 2" class="project-img">
+                        <div class="project-overlay">
+                            <h3>Robotic Pick and Place System</h3>
+                            <p>Designed and implemented a robotic pick-and-place system using MATLAB, computer vision, and kinematics to autonomously identify, localize, and sort objects based on color.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="project-card">
+                    <a href="1001.html" class="project-link">
+                        <img src="assets/1001.png" alt="Robotics Project 2" class="project-img">
+                        <div class="project-overlay">
+                            <h3>Introduction To Robotics</h3>
+                            <p>Designed a line-following delivery robot capable of autonomous navigation.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="project-card">
+                    <a href="SB.html" class="project-link">
+                        <img src="assets/AXLE.png" alt="Artifact Dissection" class="project-img">
+                        <div class="project-overlay">
+                            <h3>Artifact Dissection and Reverse Engineering</h3>
+                            <p>Reverse-engineered a skateboard in SolidWorks, creating detailed CAD models for all components</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="project-card">
+                    <a href="3002.html" class="project-link">
+                        <img src="assets/3002.jpg" alt="Robotics Project 2" class="project-img">
+                        <div class="project-overlay">
+                            <h3>TurtleBot3 SLAM Navigation System</h3>
+                            <p>Autonomous robot system that maps and navigates unknown mazes using SLAM and optimized pathfinding algorithms.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="project-card">
+                    <a href="2002.html" class="project-link">
+                        <img src="assets/2002 bot.png" alt="Robotics Project 2" class="project-img">
+                        <div class="project-overlay">
+                            <h3>Autonomous Robot Mapping System</h3>
+                            <p>Developed autonomous robot system capable of mapping unknown environments.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="project-card">
+                    <a href="HRI.html" class="project-link">
+                        <img src="assets/HRI.png" alt="Robotics Project 1" class="project-img">
+                        <div class="project-overlay">
+                            <h3>Robot Control Interface Study</h3>
+                            <p>Developed and evaluated two different controller interfaces (PS4 DualShock vs Steam Controller) for a hospital robot in Unity.</p>
+                        </div>
+                    </a>
+                </div>
             </div>
-            <div class="project-card">
-                <a href="advancedEng.html" class="project-link">
-                    <img src="assets/Vaccum.png" alt="Mechanical Project 2" class="project-img">
-                    <div class="project-overlay">
-                        <h3>DustBin Noise Reduction for Autonomous Robotic Vacuum Cleaner</h3>
-                        <p>Designed and optimized fan blade geometry for noise reduction in robotic vaccum cleaner.</p>
-                    </div>
-                </a>
-            </div>
-            <div class="project-card">
-                <a href="2001.html" class="project-link">
-                    <img src="assets/2001.png" alt="Robotics Project 2" class="project-img">
-                    <div class="project-overlay">
-                        <h3>Autonomous Solar Panel Replacement Robot</h3>
-                        <p>Developed an autonomous multi-robot system to cooperatively remove and replace solar panels at varying heights using precision four-bar mechanisms and custom grippers.</p>
-                    </div>
-                </a>
-            </div>
-            <div class="project-card">
-                <a href="3001.html" class="project-link">
-                    <img src="assets/3001.png" alt="Robotics Project 2" class="project-img">
-                    <div class="project-overlay">
-                        <h3>Robotic Pick and Place System</h3>
-                        <p>Designed and implemented a robotic pick-and-place system using MATLAB, computer vision, and kinematics to autonomously identify, localize, and sort objects based on color.</p>
-                    </div>
-                </a>
-            </div>
-            <div class="project-card">
-                <a href="1001.html" class="project-link">
-                    <img src="assets/1001.png" alt="Robotics Project 2" class="project-img">
-                    <div class="project-overlay">
-                        <h3>Introduction To Robotics</h3>
-                        <p>Designed a line-following delivery robot capable of autonomous navigation.</p>
-                    </div>
-                </a>
-            </div>
-            <div class="project-card">
-                <a href="SB.html" class="project-link">
-                    <img src="assets/AXLE.png" alt="Artifact Dissection" class="project-img">
-                    <div class="project-overlay">
-                        <h3>Artifact Dissection and Reverse Engineering</h3>
-                        <p>Reverse-engineered a skateboard in SolidWorks, creating detailed CAD models for all components</p>
-                    </div>
-                </a>
-            </div>
-            <div class="project-card">
-                <a href="3002.html" class="project-link">
-                    <img src="assets/3002.jpg" alt="Robotics Project 2" class="project-img">
-                    <div class="project-overlay">
-                        <h3>TurtleBot3 SLAM Navigation System</h3>
-                        <p>Autonomous robot system that maps and navigates unknown mazes using SLAM and optimized pathfinding algorithms.</p>
-                    </div>
-                </a>
-            </div>
-            <div class="project-card">
-                <a href="2002.html" class="project-link">
-                    <img src="assets/2002 bot.png" alt="Robotics Project 2" class="project-img">
-                    <div class="project-overlay">
-                        <h3>Autonomous Robot Mapping System</h3>
-                        <p>Developed autonomous robot system capable of mapping unknown environments.</p>
-                    </div>
-                </a>
-            </div>
-            <div class="project-card">
-                <a href="HRI.html" class="project-link">
-                    <img src="assets/HRI.png" alt="Robotics Project 1" class="project-img">
-                    <div class="project-overlay">
-                        <h3>Robot Control Interface Study</h3>
-                        <p>Developed and evaluated two different controller interfaces (PS4 DualShock vs Steam Controller) for a hospital robot in Unity. </p>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
+        </section>
 
         <section class="projects-section">
             <h2 class="section-title">Interactive Qualifying Project - Melbourne, AUS</h2>
@@ -122,6 +364,16 @@
                 </div>
             </div>
         </section>
-</main>
+    </main>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>

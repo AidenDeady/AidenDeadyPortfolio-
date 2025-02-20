@@ -14,83 +14,13 @@
             --text-secondary: #909090;
             --card-bg: rgba(20, 20, 20, 0.7);
         }
-        .metrics-container {
-            display: flex;
-            justify-content: space-around;
-            margin: 2rem 0;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
 
-        .metric-card {
-            background: var(--card-bg);
-            border-radius: 10px;
-            padding: 1.5rem;
-            text-align: center;
-            border: 1px solid var(--accent-color);
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .metric-value {
-            font-size: 2rem;
-            color: var(--accent-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .metric-label {
-            color: var(--text-secondary);
-        }
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        .progress-inProg {
-    text-align: center;
-    padding: 20px;
-    border-radius: 10px;
-    margin-top: 20px;
-}
 
-.progress-header-inProg {
-    font-size: 32px;
-    font-weight: bold;
-    text-align: center;
-    background: linear-gradient(45deg, #fff, var(--accent-color));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent; /* Makes the text take the gradient color */
-}
-
-.progress-subtext-inProg {
-    font-size: 18px;
-    font-weight: 500;
-    margin-top: 5px;
-    text-align: center;
-}
-
-.progress-description-inProg {
-    font-size: 16px;
-    color: #666;
-    margin-top: 10px;
-    text-align: center;
-}
-
-.tech-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 1rem;
-}
-
-.tech-tag {
-    background: var(--accent-color);
-    color: var(--text-primary);
-    padding: 0.25rem 0.75rem;
-    border-radius: 15px;
-    font-size: 0.9rem;
-}
         body {
             font-family: system-ui, -apple-system, sans-serif;
             background: linear-gradient(45deg, var(--primary-bg), #1a1a1a, #0d0d0d);
@@ -113,19 +43,29 @@
         .nav-content {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 1rem 2rem;
+            padding: 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: bold;
             background: linear-gradient(45deg, #fff, var(--accent-color));
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        /* Mobile menu button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
         .nav-links {
@@ -146,17 +86,49 @@
         .project-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 7rem 2rem 4rem;
+            padding: 7rem 1rem 4rem;
         }
 
         .project-title {
-            font-size: 3rem;
+            font-size: clamp(1.75rem, 5vw, 3rem);
             margin-bottom: 2rem;
             text-align: center;
             background: linear-gradient(45deg, #fff, var(--accent-color));
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        .progress-inProg {
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+
+        .progress-header-inProg {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: bold;
+            text-align: center;
+            background: linear-gradient(45deg, #fff, var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .progress-subtext-inProg {
+            font-size: clamp(1rem, 1.2vw, 1.2rem);
+            font-weight: 500;
+            margin-top: 0.5rem;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        .progress-description-inProg {
+            font-size: clamp(0.875rem, 1vw, 1rem);
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+            text-align: center;
         }
 
         .project-content {
@@ -177,54 +149,63 @@
         .info-card h3 {
             color: var(--accent-color);
             margin-bottom: 1rem;
+            font-size: clamp(1.1rem, 1.5vw, 1.25rem);
         }
 
         .info-card ul {
             list-style-position: inside;
             color: var(--text-secondary);
+            font-size: clamp(0.875rem, 1vw, 1rem);
         }
 
         .info-card li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            text-align: left;
         }
 
-        .project-images {
+        .tech-stack {
             display: flex;
-            flex-direction: column;
-            gap: 2rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: var(--accent-color);
+            color: var(--text-primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: clamp(0.75rem, 0.9vw, 0.9rem);
         }
 
         .project-image {
             width: 100%;
             border-radius: 10px;
             transition: transform 0.3s ease;
-        }
-        .weapon-image {
-    width: 60%;
-    border-radius: 10px;
-    transition: transform 0.3s ease;
-    display: block; /* Makes the image a block element */
-    margin: auto; /* Centers it horizontally */
-}
-
-
-        .project-image:hover {
-            transform: scale(1.02);
-        }
-
-        .paper-link {
-            display: block;
             margin-top: 2rem;
         }
 
-        .paper-image {
-            width: 100%;
+        .weapon-image {
+            width: 60%;
             border-radius: 10px;
             transition: transform 0.3s ease;
+            display: block;
+            margin: 2rem auto 0;
         }
 
-        .paper-image:hover {
+        .project-image:hover,
+        .weapon-image:hover {
             transform: scale(1.02);
+        }
+
+        .image-caption {
+            text-align: center;
+            font-weight: bold;
+            background: linear-gradient(45deg, #fff, var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: clamp(0.8rem, 0.9vw, 0.9rem);
+            margin-top: 0.5rem;
         }
 
         @keyframes gradient {
@@ -232,19 +213,92 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-        .project-subtitle {
-            text-align: center;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            font-size: 1.2rem;
+
+        /* Media Queries */
+        @media screen and (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 10, 10, 0.95);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .project-content {
+                grid-template-columns: 1fr;
+            }
+
+            .project-container {
+                padding-top: 5rem;
+            }
+
+            .info-card {
+                order: -1; /* Makes info card appear first on mobile */
+            }
+
+            .weapon-image {
+                width: 80%;
+            }
+
+            .progress-inProg {
+                padding: 1rem;
+            }
         }
 
+        @media screen and (max-width: 480px) {
+            .nav-content {
+                padding: 0.75rem;
+            }
+
+            .logo {
+                font-size: 1.1rem;
+            }
+
+            .project-container {
+                padding: 4rem 0.75rem 2rem;
+            }
+
+            .info-card {
+                padding: 1.5rem;
+            }
+
+            .tech-stack {
+                justify-content: center;
+            }
+
+            .weapon-image {
+                width: 100%;
+            }
+
+            .project-image,
+            .weapon-image {
+                margin-top: 1rem;
+            }
+
+            .image-caption {
+                margin-top: 0.25rem;
+            }
+        }
     </style>
 </head>
 <body>
     <nav class="nav">
         <div class="nav-content">
             <div class="logo">Aiden Deady</div>
+            <button class="mobile-menu-btn">☰</button>
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="aboutme.html">About Me</a>
@@ -253,16 +307,15 @@
             </div>
         </div>
     </nav>
-    <main class="project-container">
 
     <main class="project-container">
         <h1 class="project-title">Combat Robot Design and Development</h1>
         <div class="info-card">
-        <div class="progress-inPRog">
-            <h2 class="progress-header-inProg">In Progress</h2>
-            <p class="progress-subtext-inProg">Competition in April 2025</p>
-            <p class="progress-description-inProg">Below are some photos of our progress, all of which was designed and machined by our team!</p>
-        </div>    
+            <div class="progress-inProg">
+                <h2 class="progress-header-inProg">In Progress</h2>
+                <p class="progress-subtext-inProg">Competition in April 2025</p>
+                <p class="progress-description-inProg">Below are some photos of our progress, all of which was designed and machined by our team!</p>
+            </div>    
         </div>    
         <div class="project-content">
             <div class="left-column">
@@ -274,8 +327,7 @@
                         <li>Developed custom armor solutions using 3D printed materials</li>
                         <li>Created and optimized drivetrain, weapon systems, and motors for reliable mechanical and electrical performance</li>
                         <li>Created comprehensive CAD models and technical documentation</li>
-                        <li>Conducted stress-strain analysis in ANSYS to validate the structural integrity of components under combat conditions, ensuring durability and optimal material selection
-                        </li>
+                        <li>Conducted stress-strain analysis in ANSYS to validate the structural integrity of components under combat conditions, ensuring durability and optimal material selection</li>
                         <li>Successfully competed in an NHRL event</li>
                     </ul>
                     <h3 style="margin-top: 2rem">Technologies Used</h3>
@@ -292,30 +344,42 @@
                         <span class="tech-tag">Lithium Polymer (LiPo) Battery Management</span>
                     </div>
                 </div>
-                <img src="assets/Weapon.png" alt="Battlebot Project" class="weapon-image" style="margin-top: 2rem;">
-<p style="text-align: center; font-weight: bold; background: linear-gradient(45deg, #fff, var(--accent-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 0.9rem;">6lb Beater Bar Initial Design</p>
-<img src="assets/WheelMold.png" alt="Battlebot Project" class="weapon-image" style="margin-top: 2rem;">
-<p style="text-align: center; font-weight: bold; background: linear-gradient(45deg, #fff, var(--accent-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 0.9rem;">3D Printed Wheel Hub with Custom-Made Molds</p>
+                <img src="assets/Weapon.png" alt="Battlebot Project" class="weapon-image">
+                <p class="image-caption">6lb Beater Bar Initial Design</p>
+                
+                <img src="assets/WheelMold.png" alt="Battlebot Project" class="weapon-image">
+                <p class="image-caption">3D Printed Wheel Hub with Custom-Made Molds</p>
 
-<img src="assets/Part.png" alt="Battlebot Project" class="project-image" style="margin-top: 2rem;">
-<p style="text-align: center; font-weight: bold; background: linear-gradient(45deg, #fff, var(--accent-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 0.9rem;">3D Printed Electronics Mount and Drive Pulleys</p>
+                <img src="assets/Part.png" alt="Battlebot Project" class="project-image">
+                <p class="image-caption">3D Printed Electronics Mount and Drive Pulleys</p>
             </div>
             
             <div class="right-column">
-                <img src="assets/Screenshot 2025-02-20 115941.png" alt="Battlebot Project" class="project-image" style="margin-top: 2rem;">
+                <img src="assets/Screenshot 2025-02-20 115941.png" alt="Battlebot Project" class="project-image">
     
-                <img src="assets/CurrProgress.png" alt="Battlebot Project" class="project-image" style="margin-top: 2rem;">
-                <p style="text-align: center; font-weight: bold; background: linear-gradient(45deg, #fff, var(--accent-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 0.9rem;">Current Progress</p>
+                <img src="assets/CurrProgress.png" alt="Battlebot Project" class="project-image">
+                <p class="image-caption">Current Progress</p>
             
-                <img src="assets/DriveRail.png" alt="Battlebot Project" class="project-image" style="margin-top: 2rem;">
-                <p style="text-align: center; font-weight: bold; background: linear-gradient(45deg, #fff, var(--accent-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 0.9rem;">Final Drive Rail Design</p>
+                <img src="assets/DriveRail.png" alt="Battlebot Project" class="project-image">
+                <p class="image-caption">Final Drive Rail Design</p>
             
-                <img src="assets/TOPaBOTTOM.png" alt="Battlebot Project" class="project-image" style="margin-top: 2rem;">
-                <p style="text-align: center; font-weight: bold; background: linear-gradient(45deg, #fff, var(--accent-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 0.9rem;">Waterjet Top and Bottom Plate (Before Counterboring)</p>
-                <img src="assets/TPUOUTERARMOR.png" alt="Battlebot Project" class="project-image" style="margin-top: 2rem;">
-                <p style="text-align: center; font-weight: bold; background: linear-gradient(45deg, #fff, var(--accent-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 0.9rem;">3D Printed Outer Armor (TPU)</p>
+                <img src="assets/TOPaBOTTOM.png" alt="Battlebot Project" class="project-image">
+                <p class="image-caption">Waterjet Top and Bottom Plate (Before Counterboring)</p>
+                
+                <img src="assets/TPUOUTERARMOR.png" alt="Battlebot Project" class="project-image">
+                <p class="image-caption">3D Printed Outer Armor (TPU)</p>
             </div>
         </div>
     </main>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>

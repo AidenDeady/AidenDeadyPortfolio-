@@ -43,19 +43,29 @@
         .nav-content {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 1rem 2rem;
+            padding: 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: bold;
             background: linear-gradient(45deg, #fff, var(--accent-color));
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        /* Mobile menu button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
         .nav-links {
@@ -76,12 +86,12 @@
         .project-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 7rem 2rem 4rem;
+            padding: 7rem 1rem 4rem;
         }
 
         .project-title {
-            font-size: 3rem;
-            margin-bottom: 3rem;
+            font-size: clamp(1.75rem, 5vw, 3rem);
+            margin-bottom: 2rem;
             text-align: center;
             background: linear-gradient(45deg, #fff, var(--accent-color));
             -webkit-background-clip: text;
@@ -89,19 +99,11 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .project-subtitle {
-            text-align: center;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            font-size: 1.2rem;
-        }
-
         .metrics-container {
-            display: flex;
-            justify-content: space-around;
-            margin: 2rem 0;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1rem;
+            margin: 2rem 0;
         }
 
         .metric-card {
@@ -110,18 +112,17 @@
             padding: 1.5rem;
             text-align: center;
             border: 1px solid var(--accent-color);
-            flex: 1;
-            min-width: 200px;
         }
 
         .metric-value {
-            font-size: 2rem;
+            font-size: clamp(1.25rem, 2vw, 2rem);
             color: var(--accent-color);
             margin-bottom: 0.5rem;
         }
 
         .metric-label {
             color: var(--text-secondary);
+            font-size: clamp(0.875rem, 1vw, 1rem);
         }
 
         .project-content {
@@ -142,11 +143,13 @@
         .info-card h3 {
             color: var(--accent-color);
             margin-bottom: 1rem;
+            font-size: clamp(1.1rem, 1.5vw, 1.25rem);
         }
 
         .info-card ul {
             list-style-position: inside;
             color: var(--text-secondary);
+            font-size: clamp(0.875rem, 1vw, 1rem);
         }
 
         .info-card li {
@@ -166,26 +169,13 @@
             color: var(--text-primary);
             padding: 0.25rem 0.75rem;
             border-radius: 15px;
-            font-size: 0.9rem;
+            font-size: clamp(0.75rem, 0.9vw, 0.9rem);
         }
 
-        .project-image {
-            width: 100%;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-            margin-top: 2rem;
-        }
-
-        .project-image:hover {
-            transform: scale(1.02);
-        }
-
-        .paper-link {
-            display: block;
-            margin-top: 2rem;
-            position: relative;
-            border-radius: 10px;
-            overflow: hidden;
+        .right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
         }
 
         .paper-image {
@@ -194,40 +184,8 @@
             transition: transform 0.3s ease;
         }
 
-        .paper-link:hover .paper-image {
+        .paper-image:hover {
             transform: scale(1.02);
-        }
-
-        .paper-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(20, 20, 20, 0.8);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            border-radius: 10px;
-        }
-
-        .paper-link:hover .paper-overlay {
-            opacity: 1;
-        }
-
-        .paper-overlay-text {
-            color: var(--text-primary);
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .paper-overlay-subtext {
-            color: var(--accent-color);
-            font-size: 1.2rem;
         }
 
         @keyframes gradient {
@@ -235,12 +193,83 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
+
+        /* Media Queries */
+        @media screen and (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 10, 10, 0.95);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .project-content {
+                grid-template-columns: 1fr;
+            }
+
+            .project-container {
+                padding-top: 5rem;
+            }
+
+            .info-card {
+                order: -1; /* Makes info card appear first on mobile */
+            }
+
+            .right-column {
+                gap: 1rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .nav-content {
+                padding: 0.75rem;
+            }
+
+            .logo {
+                font-size: 1.1rem;
+            }
+
+            .project-container {
+                padding: 4rem 0.75rem 2rem;
+            }
+
+            .metric-card {
+                padding: 1rem;
+            }
+
+            .info-card {
+                padding: 1.5rem;
+            }
+
+            .tech-stack {
+                justify-content: center;
+            }
+
+            .right-column {
+                gap: 0.75rem;
+            }
+        }
     </style>
 </head>
 <body>
     <nav class="nav">
         <div class="nav-content">
             <div class="logo">Portfolio</div>
+            <button class="mobile-menu-btn">☰</button>
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="aboutme.html">About Me</a>
@@ -274,10 +303,10 @@
                     <h3>Project Highlights</h3>
                     <ul>
                         <li>Performed a comprehensive reverse engineering analysis of a skateboard, identifying key mechanical components and their functional interactions.</li>
-    <li>Accurately modeled each part in SolidWorks, applying appropriate tolerances and constraints to ensure precise component fit and realistic mechanical behavior.</li>
-    <li>Developed detailed engineering drawings, including dimensioned orthographic projections, section views, and exploded isometric assemblies.</li>
-    <li>Applied advanced SolidWorks features such as mates, material properties, and motion constraints to simulate real-world assembly conditions.</li>
-    <li>Created a high-quality 3D animation demonstrating the skateboard's assembly and disassembly, including camera transitions, exploded views, and close-up details of complex components.</li>
+                        <li>Accurately modeled each part in SolidWorks, applying appropriate tolerances and constraints to ensure precise component fit and realistic mechanical behavior.</li>
+                        <li>Developed detailed engineering drawings, including dimensioned orthographic projections, section views, and exploded isometric assemblies.</li>
+                        <li>Applied advanced SolidWorks features such as mates, material properties, and motion constraints to simulate real-world assembly conditions.</li>
+                        <li>Created a high-quality 3D animation demonstrating the skateboard's assembly and disassembly, including camera transitions, exploded views, and close-up details of complex components.</li>
                     </ul>
                     <h3 style="margin-top: 2rem">Technologies Used</h3>
                     <div class="tech-stack">
@@ -287,10 +316,20 @@
             </div>
             
             <div class="right-column">
-                    <img src="assets/SB.png" alt="Skateboard Assembly" class="paper-image">
-                    <img src="assets/AXLE.png" alt="Skateboard Assembly" class="paper-image">
-                    </div>
+                <img src="assets/SB.png" alt="Skateboard Assembly" class="paper-image">
+                <img src="assets/AXLE.png" alt="Skateboard Assembly" class="paper-image">
+            </div>
         </div>
     </main>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>

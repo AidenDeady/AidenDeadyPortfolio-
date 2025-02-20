@@ -27,7 +27,6 @@
             line-height: 1.6;
         }
 
-        /* 🔥 Animated Gradient Below Nav */
         @keyframes animatedBackground {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -39,16 +38,15 @@
             background-size: 300% 300%;
             animation: animatedBackground 8s ease infinite;
             min-height: 100vh;
-            padding-top: 6rem; /* To ensure content starts below the navbar */
+            padding-top: 4rem;
         }
 
-        /* Static Nav Bar */
         .nav {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 1.5rem 2rem;
-            background: rgba(0, 0, 0, 0.9); /* Slight transparency for effect */
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.9);
             z-index: 1000;
             display: flex;
             justify-content: center;
@@ -61,10 +59,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0 1rem;
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: bold;
             background: linear-gradient(45deg, #fff, var(--accent-color));
             -webkit-background-clip: text;
@@ -74,7 +73,7 @@
 
         .nav-links {
             display: flex;
-            gap: 3rem;
+            gap: 2rem;
         }
 
         .nav-links a {
@@ -94,28 +93,36 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: left;
-            padding: 4rem 5rem;
-            min-height: calc(100vh - 6rem); /* Ensure full viewport minus nav height */
+            padding: 2rem 1rem;
+            min-height: calc(100vh - 4rem);
+        }
+
+        .hero-container {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            align-items: center;
+            gap: 2rem;
+            padding: 0 1rem;
         }
 
         .hero-content {
             flex: 1;
-            max-width: 50%;
+            max-width: 100%;
         }
 
         .hero h1 {
-            font-size: 5vw;
+            font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 800;
             letter-spacing: -2px;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             background: Black;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 1.2vw, 1.2rem);
             max-width: 600px;
             margin-bottom: 2rem;
             color: #ccc;
@@ -123,7 +130,7 @@
 
         .hero .cta-button {
             display: inline-block;
-            padding: 1rem 2rem;
+            padding: 0.875rem 1.75rem;
             font-size: 1rem;
             color: #fff;
             background: black;
@@ -147,23 +154,100 @@
 
         .hero-image img {
             width: 100%;
-            max-width: 600px;
+            max-width: 500px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
         }
 
-        .hero-container {
-            display: flex;
-            width: 100%;
-            align-items: center;
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Media Queries */
+        @media screen and (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.95);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hero-container {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-image img {
+                max-width: 300px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .nav {
+                padding: 0.75rem;
+            }
+
+            .logo {
+                font-size: 1.1rem;
+            }
+
+            .hero {
+                padding: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero .cta-button {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .hero-image img {
+                max-width: 250px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Static Navbar -->
     <nav class="nav">
         <div class="nav-content">
             <div class="logo">Aiden Deady</div>
+            <button class="mobile-menu-btn">☰</button>
             <div class="nav-links">
                 <a href="#home">Home</a>
                 <a href="aboutme.html">About Me</a>
@@ -173,7 +257,6 @@
         </div>
     </nav>
 
-    <!-- Animated Gradient Background Below Nav -->
     <div class="main-content">
         <section id="home" class="hero">
             <div class="hero-container">
@@ -188,5 +271,15 @@
             </div>
         </section>
     </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>

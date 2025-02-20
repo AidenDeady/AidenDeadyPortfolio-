@@ -43,19 +43,29 @@
         .nav-content {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 1rem 2rem;
+            padding: 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: bold;
             background: linear-gradient(45deg, #fff, var(--accent-color));
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        /* Mobile menu button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
         .nav-links {
@@ -76,12 +86,12 @@
         .project-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 7rem 2rem 4rem;
+            padding: 7rem 1rem 4rem;
         }
 
         .project-title {
-            font-size: 3rem;
-            margin-bottom: 3rem;
+            font-size: clamp(1.75rem, 5vw, 3rem);
+            margin-bottom: 1.5rem;
             text-align: center;
             background: linear-gradient(45deg, #fff, var(--accent-color));
             -webkit-background-clip: text;
@@ -93,15 +103,14 @@
             text-align: center;
             color: var(--text-secondary);
             margin-bottom: 2rem;
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 1.2vw, 1.2rem);
         }
 
         .metrics-container {
-            display: flex;
-            justify-content: space-around;
-            margin: 2rem 0;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1rem;
+            margin: 2rem 0;
         }
 
         .metric-card {
@@ -110,18 +119,17 @@
             padding: 1.5rem;
             text-align: center;
             border: 1px solid var(--accent-color);
-            flex: 1;
-            min-width: 200px;
         }
 
         .metric-value {
-            font-size: 2rem;
+            font-size: clamp(1.25rem, 2vw, 2rem);
             color: var(--accent-color);
             margin-bottom: 0.5rem;
         }
 
         .metric-label {
             color: var(--text-secondary);
+            font-size: clamp(0.875rem, 1vw, 1rem);
         }
 
         .project-content {
@@ -142,11 +150,13 @@
         .info-card h3 {
             color: var(--accent-color);
             margin-bottom: 1rem;
+            font-size: clamp(1.1rem, 1.5vw, 1.25rem);
         }
 
         .info-card ul {
             list-style-position: inside;
             color: var(--text-secondary);
+            font-size: clamp(0.875rem, 1vw, 1rem);
         }
 
         .info-card li {
@@ -166,7 +176,7 @@
             color: var(--text-primary);
             padding: 0.25rem 0.75rem;
             border-radius: 15px;
-            font-size: 0.9rem;
+            font-size: clamp(0.75rem, 0.9vw, 0.9rem);
         }
 
         .paper-link {
@@ -176,6 +186,7 @@
             border-radius: 10px;
             overflow: hidden;
             cursor: pointer;
+            text-decoration: none;
         }
 
         .paper-image {
@@ -211,13 +222,13 @@
 
         .paper-overlay-text {
             color: var(--text-primary);
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+            font-size: clamp(1.25rem, 1.5vw, 1.5rem);
+            margin-bottom: 0.5rem;
         }
 
         .paper-overlay-subtext {
             color: var(--accent-color);
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 1.2vw, 1.2rem);
         }
 
         @keyframes gradient {
@@ -225,12 +236,88 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
+
+        /* Media Queries */
+        @media screen and (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 10, 10, 0.95);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .project-content {
+                grid-template-columns: 1fr;
+            }
+
+            .project-container {
+                padding-top: 5rem;
+            }
+
+            .info-card {
+                order: -1; /* Makes info card appear first on mobile */
+            }
+
+            .paper-link {
+                margin-top: 1rem;
+            }
+
+            .paper-overlay {
+                opacity: 1;
+                background: rgba(20, 20, 20, 0.6);
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .nav-content {
+                padding: 0.75rem;
+            }
+
+            .logo {
+                font-size: 1.1rem;
+            }
+
+            .project-container {
+                padding: 4rem 0.75rem 2rem;
+            }
+
+            .metric-card {
+                padding: 1rem;
+            }
+
+            .info-card {
+                padding: 1.5rem;
+            }
+
+            .tech-stack {
+                justify-content: center;
+            }
+
+            .paper-link {
+                margin-top: 0.75rem;
+            }
+        }
     </style>
 </head>
 <body>
     <nav class="nav">
         <div class="nav-content">
             <div class="logo">Portfolio</div>
+            <button class="mobile-menu-btn">☰</button>
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="aboutme.html">About Me</a>
@@ -291,14 +378,26 @@
                     </div>
                 </a>
             </div>
-            <a href="assets/HRIFINAL.pdf" class="paper-link">
-                <img src="assets/HRIFRONTPAGE.png" alt="Interface Comparison Study" class="paper-image">
-                <div class="paper-overlay">
-                    <div class="paper-overlay-text">Click Here</div>
-                    <div class="paper-overlay-subtext">to View Full Document</div>
-                </div>
-            </a>
+            <div class="right-column">
+                <a href="assets/HRIFINAL.pdf" class="paper-link">
+                    <img src="assets/HRIFRONTPAGE.png" alt="Interface Comparison Study" class="paper-image">
+                    <div class="paper-overlay">
+                        <div class="paper-overlay-text">Click Here</div>
+                        <div class="paper-overlay-subtext">to View Full Document</div>
+                    </div>
+                </a>
+            </div>
         </div>
     </main>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
