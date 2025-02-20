@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Robot Control Interface Study - Portfolio</title>
+    <style>
+        :root {
+            --primary-bg: #0a0a0a;
+            --secondary-bg: #141414;
+            --accent-color: #ff3333;
+            --accent-glow: #ff333333;
+            --text-primary: #ffffff;
+            --text-secondary: #909090;
+            --card-bg: rgba(20, 20, 20, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: linear-gradient(45deg, var(--primary-bg), #1a1a1a, #0d0d0d);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .nav {
+            position: fixed;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 51, 51, 0.1);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #fff, var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .project-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 7rem 2rem 4rem;
+        }
+
+        .project-title {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(45deg, #fff, var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .project-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+        }
+
+        .metrics-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .metric-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid var(--accent-color);
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            color: var(--text-secondary);
+        }
+
+        .project-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            border: 1px solid var(--accent-color);
+            height: fit-content;
+        }
+
+        .info-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .info-card ul {
+            list-style-position: inside;
+            color: var(--text-secondary);
+        }
+
+        .info-card li {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: var(--accent-color);
+            color: var(--text-primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+
+        .paper-link {
+            display: block;
+            margin-top: 2rem;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .paper-image {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .paper-link:hover .paper-image {
+            transform: scale(1.02);
+        }
+
+        .paper-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(20, 20, 20, 0.8);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .paper-link:hover .paper-overlay {
+            opacity: 1;
+        }
+
+        .paper-overlay-text {
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .paper-overlay-subtext {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="logo">Portfolio</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="aboutme.html">About Me</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="project-container">
+        <h1 class="project-title">Robot Control Interface Study</h1>
+        <div class="project-subtitle">Unity Hospital Simulation Research</div>
+
+        <div class="metrics-container">
+            <div class="metric-card">
+                <div class="metric-value">Research</div>
+                <div class="metric-label">Robotics Control Interface Analysis</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">Unity</div>
+                <div class="metric-label">Hospital Environment Simulation</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">Human Study</div>
+                <div class="metric-label">Quantitative Interface Comparison</div>
+            </div>
+        </div>
+        
+        <div class="project-content">
+            <div class="left-column">
+                <div class="info-card">
+                    <h3>Project Highlights</h3>
+                    <ul>
+                        <li>Developed comprehensive testing environment in Unity for evaluating robot control interfaces</li>
+                        <li>Implemented and compared PS4 DualShock and Steam controller mappings for complex robotic manipulation tasks</li>
+                        <li>Designed series of standardized tasks including navigation, object manipulation, and precision control</li>
+                        <li>Conducted human subject study with statistical analysis of performance metrics</li>
+                        <li>Collected and analyzed quantitative data on completion times, error rates, and user satisfaction</li>
+                        <li>Generated insights on optimal interface design for robotic control systems</li>
+                    </ul>
+                    <h3 style="margin-top: 2rem">Technologies Used</h3>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Unity</span>
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">ROS</span>
+                        <span class="tech-tag">Steam SDK</span>
+                        <span class="tech-tag">PS4 SDK</span>
+                        <span class="tech-tag">Statistical Analysis</span>
+                        <span class="tech-tag">User Studies</span>
+                        <span class="tech-tag">Robotics</span>
+                    </div>
+                </div>
+                <a href="assets/HRIPP.pptx" class="paper-link">
+                    <img src="assets/HRICOVER.png" alt="Interface Comparison Study" class="paper-image">
+                    <div class="paper-overlay">
+                        <div class="paper-overlay-text">Click Here</div>
+                        <div class="paper-overlay-subtext">to View Full Document</div>
+                    </div>
+                </a>
+            </div>
+            <a href="assets/HRIFINAL.pdf" class="paper-link">
+                <img src="assets/HRIFRONTPAGE.png" alt="Interface Comparison Study" class="paper-image">
+                <div class="paper-overlay">
+                    <div class="paper-overlay-text">Click Here</div>
+                    <div class="paper-overlay-subtext">to View Full Document</div>
+                </div>
+            </a>
+        </div>
+    </main>
+</body>
+</html>

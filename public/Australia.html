@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hidden Voices Research Project - Portfolio</title>
+    <style>
+        :root {
+            --primary-bg: #0a0a0a;
+            --secondary-bg: #141414;
+            --accent-color: #ff3333;
+            --accent-glow: #ff333333;
+            --text-primary: #ffffff;
+            --text-secondary: #909090;
+            --card-bg: rgba(20, 20, 20, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: linear-gradient(45deg, var(--primary-bg), #1a1a1a, #0d0d0d);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .nav {
+            position: fixed;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 51, 51, 0.1);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #fff, var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .project-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 7rem 2rem 4rem;
+        }
+
+        .project-title {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(45deg, #fff, var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .project-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+        }
+
+        .metrics-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .metric-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid var(--accent-color);
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            color: var(--text-secondary);
+        }
+
+        .project-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            border: 1px solid var(--accent-color);
+            height: fit-content;
+        }
+
+        .info-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .info-card ul {
+            list-style-position: inside;
+            color: var(--text-secondary);
+        }
+
+        .info-card li {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: var(--accent-color);
+            color: var(--text-primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+
+        .paper-link {
+            display: block;
+            margin-top: 2rem;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .paper-image {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .paper-link:hover .paper-image {
+            transform: scale(1.02);
+        }
+
+        .paper-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(20, 20, 20, 0.8);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .paper-link:hover .paper-overlay {
+            opacity: 1;
+        }
+
+        .paper-overlay-text {
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .paper-overlay-subtext {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="logo">Portfolio</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="aboutme.html">About Me</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="project-container">
+        <h1 class="project-title">Hidden Voices Research Study</h1>
+        <div class="project-subtitle">Supporting Children of Emergency Service Workers</div>
+
+        <div class="metrics-container">
+            <div class="metric-card">
+                <div class="metric-value">Research</div>
+                <div class="metric-label">Mental Health Impact Study</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">Focus Groups</div>
+                <div class="metric-label">Child Experience Analysis</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">Framework</div>
+                <div class="metric-label">Support Recommendations</div>
+            </div>
+        </div>
+        
+        <div class="project-content">
+            <div class="left-column">
+                <div class="info-card">
+                    <h3>Project Highlights</h3>
+                    <ul>
+                        <li>Conducted comprehensive research on the impacts of emergency service work on children's mental health and wellbeing</li>
+                        <li>Led focus groups with 23 children of emergency service workers to understand their experiences</li>
+                        <li>Analyzed qualitative data to identify key themes and patterns in children's experiences</li>
+                        <li>Developed the A.C.E. framework for supporting children of emergency service workers</li>
+                        <li>Created recommendations for improving support systems and resources</li>
+                    </ul>
+                    <h3 style="margin-top: 2rem">Key Methods</h3>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Focus Groups</span>
+                        <span class="tech-tag">Qualitative Analysis</span>
+                        <span class="tech-tag">Mental Health</span>
+                        <span class="tech-tag">Research Methods</span>
+                        <span class="tech-tag">Data Collection</span>
+                        <span class="tech-tag">Framework Development</span>
+                    </div>
+                </div>
+                <a href="assets/Final_Slides_ESF_Hidden_Voices (2).pdf" class="paper-link">
+                    <img src="assets/AUSFRONT.png" alt="Final Presentation" class="paper-image">
+                    <div class="paper-overlay">
+                        <div class="paper-overlay-text">Click Here</div>
+                        <div class="paper-overlay-subtext">to View Final Presentation</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="right-column">
+                <a href="assets/document.pdf" class="paper-link">
+                    <img src="assets/FRONTAUS.png" alt="Research Paper" class="paper-image">
+                    <div class="paper-overlay">
+                        <div class="paper-overlay-text">Click Here</div>
+                        <div class="paper-overlay-subtext">to View Full Research Paper</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

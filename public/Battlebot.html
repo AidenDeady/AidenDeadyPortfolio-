@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battlebot Project - Aiden Deady</title>
+    <style>
+        :root {
+            --primary-bg: #0a0a0a;
+            --secondary-bg: #141414;
+            --accent-color: #ff3333;
+            --accent-glow: #ff333333;
+            --text-primary: #ffffff;
+            --text-secondary: #909090;
+            --card-bg: rgba(20, 20, 20, 0.7);
+        }
+        .metrics-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .metric-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid var(--accent-color);
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            color: var(--text-secondary);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .progress-inProg {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.progress-header-inProg {
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    background: linear-gradient(45deg, #fff, var(--accent-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent; /* Makes the text take the gradient color */
+}
+
+.progress-subtext-inProg {
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.progress-description-inProg {
+    font-size: 16px;
+    color: #666;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.tech-tag {
+    background: var(--accent-color);
+    color: var(--text-primary);
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.9rem;
+}
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: linear-gradient(45deg, var(--primary-bg), #1a1a1a, #0d0d0d);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .nav {
+            position: fixed;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 51, 51, 0.1);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #fff, var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .project-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 7rem 2rem 4rem;
+        }
+
+        .project-title {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            background: linear-gradient(45deg, #fff, var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .project-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            border: 1px solid var(--accent-color);
+            height: fit-content;
+        }
+
+        .info-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .info-card ul {
+            list-style-position: inside;
+            color: var(--text-secondary);
+        }
+
+        .info-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        .project-images {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .project-image {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        .weapon-image {
+    width: 60%;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    display: block; /* Makes the image a block element */
+    margin: auto; /* Centers it horizontally */
+}
+
+
+        .project-image:hover {
+            transform: scale(1.02);
+        }
+
+        .paper-link {
+            display: block;
+            margin-top: 2rem;
+        }
+
+        .paper-image {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .paper-image:hover {
+            transform: scale(1.02);
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .project-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="logo">Aiden Deady</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="aboutme.html">About Me</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+    <main class="project-container">
+
+    <main class="project-container">
+        <h1 class="project-title">Combat Robot Design and Development</h1>
+        <div class="info-card">
+        <div class="progress-inPRog">
+            <h2 class="progress-header-inProg">In Progress</h2>
+            <p class="progress-subtext-inProg">Competition in April 2025</p>
+            <p class="progress-description-inProg">Below are some photos of our progress, all of which was designed and machined by our team!</p>
+        </div>    
+        </div>    
+        <div class="project-content">
+            <div class="left-column">
+                <div class="info-card">
+                    <h3>Project Highlights (In Progress)</h3>
+                    <ul>
+                        <li>Led a team of 5 to design a 30lb combat robot using Onshape and CAM tools</li>
+                        <li>Manufactured components via CNC machining, and Waterjet and ensured precise tolerances for performance</li>
+                        <li>Developed custom armor solutions using 3D printed materials</li>
+                        <li>Created and optimized drivetrain, weapon systems, and motors for reliable mechanical and electrical performance</li>
+                        <li>Created comprehensive CAD models and technical documentation</li>
+                        <li>Conducted stress-strain analysis in ANSYS to validate the structural integrity of components under combat conditions, ensuring durability and optimal material selection
+                        </li>
+                        <li>Successfully competed in an NHRL event</li>
+                    </ul>
+                    <h3 style="margin-top: 2rem">Technologies Used</h3>
+                    <div class="tech-stack">
+                        <span class="tech-tag">SolidWorks</span>
+                        <span class="tech-tag">Onshape</span>
+                        <span class="tech-tag">ANSYS (FEA)</span>
+                        <span class="tech-tag">CNC Mill, Lathe, & Waterjet</span>
+                        <span class="tech-tag">MasterCAM</span>
+                        <span class="tech-tag">3D Printing</span>
+                        <span class="tech-tag">Stress-Strain Analysis</span>
+                        <span class="tech-tag">Material Selection & Optimization</span>
+                        <span class="tech-tag">Brushless Motor Control</span>
+                        <span class="tech-tag">Lithium Polymer (LiPo) Battery Management</span>
+                    </div>
+                </div>
+                <img src="assets/Weapon.png" alt="Battlebot Project" class="weapon-image" style="margin-top: 2rem;">
+<p style="text-align: center; font-weight: bold; background: linear-gradient(45deg, #fff, var(--accent-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 0.9rem;">6lb Beater Bar Initial Design</p>
+<img src="assets/WheelMold.png" alt="Battlebot Project" class="weapon-image" style="margin-top: 2rem;">
+<p style="text-align: center; font-weight: bold; background: linear-gradient(45deg, #fff, var(--accent-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 0.9rem;">3D Printed Wheel Hub with Custom-Made Molds</p>
+
+<img src="assets/Part.png" alt="Battlebot Project" class="project-image" style="margin-top: 2rem;">
+<p style="text-align: center; font-weight: bold; background: linear-gradient(45deg, #fff, var(--accent-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 0.9rem;">3D Printed Electronics Mount and Drive Pulleys</p>
+            </div>
+            
+            <div class="right-column">
+                <img src="assets/Screenshot 2025-02-20 115941.png" alt="Battlebot Project" class="project-image" style="margin-top: 2rem;">
+    
+                <img src="assets/CurrProgress.png" alt="Battlebot Project" class="project-image" style="margin-top: 2rem;">
+                <p style="text-align: center; font-weight: bold; background: linear-gradient(45deg, #fff, var(--accent-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 0.9rem;">Current Progress</p>
+            
+                <img src="assets/DriveRail.png" alt="Battlebot Project" class="project-image" style="margin-top: 2rem;">
+                <p style="text-align: center; font-weight: bold; background: linear-gradient(45deg, #fff, var(--accent-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 0.9rem;">Final Drive Rail Design</p>
+            
+                <img src="assets/TOPaBOTTOM.png" alt="Battlebot Project" class="project-image" style="margin-top: 2rem;">
+                <p style="text-align: center; font-weight: bold; background: linear-gradient(45deg, #fff, var(--accent-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 0.9rem;">Waterjet Top and Bottom Plate (Before Counterboring)</p>
+                <img src="assets/TPUOUTERARMOR.png" alt="Battlebot Project" class="project-image" style="margin-top: 2rem;">
+                <p style="text-align: center; font-weight: bold; background: linear-gradient(45deg, #fff, var(--accent-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 0.9rem;">3D Printed Outer Armor (TPU)</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

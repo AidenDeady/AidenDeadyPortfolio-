@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autonomous Robot Mapping System - Portfolio</title>
+    <style>
+        :root {
+            --primary-bg: #0a0a0a;
+            --secondary-bg: #141414;
+            --accent-color: #ff3333;
+            --accent-glow: #ff333333;
+            --text-primary: #ffffff;
+            --text-secondary: #909090;
+            --card-bg: rgba(20, 20, 20, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: linear-gradient(45deg, var(--primary-bg), #1a1a1a, #0d0d0d);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .nav {
+            position: fixed;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 51, 51, 0.1);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #fff, var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .project-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 7rem 2rem 4rem;
+        }
+
+        .project-title {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(45deg, #fff, var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .project-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+        }
+
+        .metrics-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .metric-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid var(--accent-color);
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            color: var(--text-secondary);
+        }
+
+        .project-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            border: 1px solid var(--accent-color);
+            height: fit-content;
+        }
+
+        .info-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .info-card ul {
+            list-style-position: inside;
+            color: var(--text-secondary);
+        }
+
+        .info-card li {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: var(--accent-color);
+            color: var(--text-primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+
+        .right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .project-image {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 10px;
+            border: 1px solid var(--accent-color);
+            padding: 0.5rem;
+            background: var(--card-bg);
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="logo">Portfolio</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="aboutme.html">About Me</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="project-container">
+        <h1 class="project-title">Autonomous Robot Mapping System</h1>
+
+        <div class="metrics-container">
+            <div class="metric-card">
+                <div class="metric-value">Mapping</div>
+                <div class="metric-label">Real-time Environment Exploration</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">Sensor Fusion</div>
+                <div class="metric-label">Camera & Distance Integration</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">PID Control</div>
+                <div class="metric-label">Precision Wall Following</div>
+            </div>
+        </div>
+        
+        <div class="project-content">
+            <div class="left-column">
+                <div class="info-card">
+                    <h3>Project Highlights</h3>
+                    <ul>
+                        <li>Developed autonomous robot system capable of mapping unknown environments using sensor fusion of camera, sonar, and IR sensors</li>
+                        <li>Implemented PID-controlled wall-following algorithm achieving consistent 10cm path accuracy</li>
+                        <li>Created wireless data transmission system using ESP32 and MQTT for real-time map generation</li>
+                        <li>Built object detection system using OpenMV camera and AprilTags for precise positioning</li>
+                        <li>Designed robust navigation system combining odometry and sensor feedback for accurate return-to-start</li>
+                        <li>Achieved successful mapping of both simple and complex environmental features</li>
+                    </ul>
+                    <h3 style="margin-top: 2rem">Technologies Used</h3>
+                    <div class="tech-stack">
+                        <span class="tech-tag">C++</span>
+                        <span class="tech-tag">ESP32</span>
+                        <span class="tech-tag">MQTT</span>
+                        <span class="tech-tag">OpenMV</span>
+                        <span class="tech-tag">PID Control</span>
+                        <span class="tech-tag">Sensor Fusion</span>
+                        <span class="tech-tag">AprilTags</span>
+                        <span class="tech-tag">GitHub</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-column">             
+                <img src="assets/Mapping.png" alt="Mapping Results" class="project-image">
+                <img src="assets/2001Front.png" alt="Robot Mapping Demo" class="project-image">
+            </div>
+        </div>
+    </main>
+</body>
+</html>

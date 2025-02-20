@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Aiden Deady</title>
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="logo">Aiden Deady</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="aboutme.html" style="color: var(--text-primary);">About Me</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <section class="contact-info">
+            <h1>Get in Touch</h1>
+            <p>I'm actively seeking a full-time position in Mechanical Engineering or Robotics. If you're interested in collaborating, have opportunities that align with my skills, or just want to discuss innovative engineering solutions, feel free to reach out!</p>
+
+            <div class="contact-details">
+                <div class="contact-card">
+                    <h3>Email</h3>
+                    <p><a href="mailto:acdeady@wpi.edu">acdeady@wpi.edu</a></p>
+                </div>
+                <div class="contact-card">
+                    <h3>LinkedIn</h3>
+                    <p><a href="https://www.linkedin.com/in/aidendeady" target="_blank">Visit my LinkedIn</a></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-form">
+            <h2>Send Me a Message</h2>
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="6" placeholder="Your message here..." required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Send Message</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
